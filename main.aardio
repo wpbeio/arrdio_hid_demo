@@ -1,0 +1,24 @@
+import win.ui;
+/*DSG{{*/
+mainForm = win.form(text="aardio form";right=973;bottom=619)
+mainForm.add(
+button={cls="button";text="button";left=155;top=505;right=645;bottom=584;z=2};
+static={cls="static";left=100;top=64;right=768;bottom=448;ah=1;aw=1;transparent=1;z=1}
+)
+/*}}*/
+
+import hid;
+mainForm.button.oncommand = function(id,event){
+for deviceInfo in hid.device.each() {
+   var vendorId=deviceInfo.vendorId:"null";
+   var productId=deviceInfo.productId:"null";
+   var serialNumber=deviceInfo.serialNumber:"null";
+   var path=deviceInfo.path:"null";
+	mainForm.static.text=vendorId+'\t'+productId+'\t'+serialNumber+'\t'+path+'\n'+mainForm.static.text
+}
+}
+
+mainForm.enableDpiScaling();
+mainForm.show();
+
+return win.loopMessage();
