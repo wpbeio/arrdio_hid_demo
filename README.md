@@ -1,0 +1,2 @@
+# arrdio_bid_demo
+arrdio使用平台封装HID库进行USB HID的一个demo
